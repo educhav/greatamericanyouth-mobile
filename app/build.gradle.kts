@@ -61,9 +61,13 @@ dependencies {
     implementation("androidx.compose.material3:material3")
     implementation("androidx.compose.material:material")
 
-    // WebSocket
-    implementation("com.squareup.okhttp3:okhttp:4.12.0")
-    implementation("com.squareup.okhttp3:okhttp-ws:4.12.0")
+    implementation("io.socket:socket.io-client:2.1.0")
+    implementation("io.socket:engine.io-client:2.1.0")
+
+    // Exoplayer
+    implementation("androidx.media3:media3-exoplayer:1.3.0")
+    implementation("androidx.media3:media3-exoplayer-dash:1.3.0")
+    implementation("androidx.media3:media3-ui:1.3.0")
 
     // JWT libraries
     implementation("io.jsonwebtoken:jjwt-api:0.11.2")

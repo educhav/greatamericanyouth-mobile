@@ -3,6 +3,7 @@ package com.example.greatamericanyouth.repositories
 import android.content.Context
 import android.net.Uri
 import androidx.compose.ui.platform.LocalContext
+import com.example.greatamericanyouth.components.common.utils.uriToFile
 import com.example.greatamericanyouth.services.common.ApiResponse
 import com.example.greatamericanyouth.services.common.AuthService
 import com.example.greatamericanyouth.viewmodels.LoginInfo
@@ -72,23 +73,5 @@ class UserRepository {
         val claims: Map<String, LinkedTreeMap<String, String>> = Gson().fromJson(payload.utf8(), type)
         val sub: LinkedTreeMap<String, String>? = claims["sub"]
         return LoginInfo(sub?.get("username"), sub?.get("role"), token, sub?.get("profilePhoto"))
-    }
-    private fun uriToFile(context: Context, uri: Uri): File {
-        val contentResolver = context.contentResolver
-        val filePath = File(context.cacheDir, "picked_media").apply {
-            if (!exists()) mkdirs()
-        }
-        return try {
-            val inputStream = contentResolver.openInputStream(uri)
-            val file = File(filePath, "profile_photo.jpg")
-            file.outputStream().use { outputStream ->
-                inputStream?.copyTo(outputStream)
-            }
-            inputStream?.close()
-            file
-        } catch (e: IOException) {
-            e.printStackTrace()
-            throw IOException("Error creating file", e)
-        }
     }
 }

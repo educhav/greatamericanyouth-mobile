@@ -1,9 +1,10 @@
-package com.example.greatamericanyouth.components.common
+package com.example.greatamericanyouth.components.common.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -27,14 +28,13 @@ import com.example.greatamericanyouth.R
 @Composable
 fun TopBanner() {
     Row {
-        val painter: Painter = painterResource(R.drawable.banner_eagle)
-        Image(painter = painter,
-            contentDescription = null,
-            modifier = Modifier.height(55.dp).clip(RoundedCornerShape(16.dp))
-        )
+        val painter: Painter = painterResource(R.drawable.turing)
+        //Image(painter = painter,
+         //   contentDescription = null,
+          //  modifier = Modifier.width(512.dp).clip(RoundedCornerShape(16.dp))
+        //)
         val coloredTitle = getColoredTitle()
         Text(coloredTitle,
-            fontStyle = FontStyle.Italic,
             fontFamily = FontFamily.Monospace,
             fontWeight = FontWeight.ExtraBold,
             fontSize = 22.sp,
@@ -45,11 +45,11 @@ fun TopBanner() {
 @Composable
 private fun getColoredTitle(): AnnotatedString {
     return buildAnnotatedString {
-        "The Great American Youth".forEachIndexed { _, char ->
+        "Canon".forEachIndexed { _, char ->
             val color = when (char) {
-                'G' -> Color.Red
-                'A' -> Color.Blue
-                'Y' -> Color.White
+                'C' -> Color.White
+                'A' -> Color.White
+                'N' -> Color.White
                 else -> MaterialTheme.colorScheme.onBackground
             }
 
